@@ -1,9 +1,9 @@
 {
   "name": "graphcms-blog",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "engines": {
-    "node": ">=14.0"
+    "node": ">=14.x"
   },
   "engineStrict": true,
   "scripts": {
