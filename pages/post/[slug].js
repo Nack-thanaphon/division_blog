@@ -1,9 +1,18 @@
-import React from 'react';
-import { useRouter } from 'next/router';
+import React from "react";
+import { useRouter } from "next/router";
 
-import { PostDetail, Categories, PostWidget, Author, Comments, CommentsForm, Loader } from '../../components';
-import { getPosts, getPostDetails } from '../../services';
-import { AdjacentPosts } from '../../sections';
+import {
+  PostDetail,
+  Categories,
+  PostWidget,
+  Author,
+  Comments,
+  CommentsForm,
+  Loader,
+} from "../../components";
+import Head from "next/head";
+import { getPosts, getPostDetails } from "../../services";
+import { AdjacentPosts } from "../../sections";
 
 const PostDetails = ({ post }) => {
   const router = useRouter();
@@ -14,6 +23,13 @@ const PostDetails = ({ post }) => {
 
   return (
     <>
+      <Head>
+        <title>{post.title} | DivisionBlog</title>
+        <meta name="description" content={post.excerpt} />
+        <meta itemprop="name" content={post.title} />
+        <meta itemprop="description" content={post.excerpt} />
+        <meta itemprop="image" content={post.featuredImage.url} />
+      </Head>
       <div className="container mx-auto px-2 mb-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="col-span-1 lg:col-span-8">
@@ -25,7 +41,12 @@ const PostDetails = ({ post }) => {
           </div>
           <div className="col-span-1 lg:col-span-4">
             <div className="relative lg:sticky top-8">
-              <PostWidget slug={post.slug} categories={post.categories.map((categories) => categories.slug)} />
+              <PostWidget
+                slug={post.slug}
+                categories={post.categories.map(
+                  (categories) => categories.slug
+                )}
+              />
               <Categories />
             </div>
           </div>
