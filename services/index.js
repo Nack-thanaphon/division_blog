@@ -10,7 +10,9 @@ export const getPosts = async () => {
           cursor
           node {
             author {
-              bio
+              bio{
+                text
+              }
               name
               id
               photo {
@@ -65,7 +67,9 @@ export const getPostDetails = async (slug) => {
         }
         author{
           name
-          bio
+          bio{
+            text
+          }
           photo {
             url
           }
@@ -152,7 +156,9 @@ export const getCategoryPost = async (slug) => {
           cursor
           node {
             author {
-              bio
+              bio{
+                text
+              }
               name
               id
               photo {
